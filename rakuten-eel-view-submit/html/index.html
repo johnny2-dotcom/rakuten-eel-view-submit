@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>商品情報検索</title>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+            <link rel="stylesheet" href="./style.css">
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-sm-10">
+                <h2>商品情報検索アプリ</h2>
+
+                <div class="form-group">
+
+                    <label for="search_word">商品情報検索</label>
+                    <input id="search_word" type="text" class="form-control" placeholder="商品名を入力してください" required>
+
+                    <button id="search" class="btn btn-primary">検索実行</button><br/>
+
+                    <label for="search_word_b">最高値・最安値検索</label>
+                    <input id="search_word_b" type="text" class="form-control" placeholder="商品名を入力してください" required>
+
+                    <button id="search_b" class="btn btn-primary">検索実行</button><br/>
+
+                    <label for="search_word_c">ランキング検索</label>
+                    <input id="search_word_c" type="text" class="form-control" placeholder="商品IDを入力してください" required>
+
+                    <button id="search_c" class="btn btn-primary">検索実行</button><br/>
+
+                    <label for="result">検索状況</label>
+                    <textarea id="result" class="form-control" rows=40></textarea>
+
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="./eel.js"></script>
+        <script>
+            search.addEventListener('click', () => {
+                eel.search_item(search_word.value)
+            })
+
+            search_b.addEventListener('click', () => {
+                eel.max_min_price(search_word_b.value)
+            })
+
+            search_c.addEventListener('click', () => {
+                eel.ranking_item(search_word_c.value)
+            })
+
+            eel.expose(view_log)
+            function view_log(text){
+                result.value += text + "\n"
+            }
+        </script>
+        
+    </body>
+</html>
